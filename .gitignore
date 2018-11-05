@@ -1,1 +1,7 @@
+/node_modules/
+/public/
+/package-lock.json
+# https://docs.npmjs.com/misc/config#loglevel
+*.log
+
 .DS_Store

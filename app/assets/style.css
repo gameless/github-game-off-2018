@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background: black;
+
+  /* https://stackoverflow.com/a/19461564/5044950 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
