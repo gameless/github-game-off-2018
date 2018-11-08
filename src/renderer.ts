@@ -20,7 +20,7 @@ const game = new Phaser.Game(config);
 
 window.addEventListener('beforeunload', () => game.destroy(true, true));
 
-let scene : Phaser.Scene;
+let scene: Phaser.Scene;
 
 window.addEventListener('resize', () => {
   const width = window.innerWidth;
