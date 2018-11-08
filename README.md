@@ -1,24 +1,24 @@
 GitHub Game Off 2018
 ====================
 
-Install
--------
+Setup
+-----
 
-Install the necessary `node_modules`:
-```sh
-npm install
-```
+1. [Install Git.][git]
+2. [Install NPM.][npm]
+3. Install this repository:
+   ```sh
+   git clone https://github.com/gameless/github-game-off-2018.git
+   cd github-game-off-2018
+   npm install
+   ```
 
-Develop
--------
+Run
+---
 
-Start the watcher with continuous rebuild:
 ```sh
 npm start
 ```
-This will launch an HTTP server at <http://localhost:3333/>.
 
-You can also typecheck the code:
-```sh
-npm test
-```
+[git]: https://git-scm.com/downloads
+[npm]: https://www.npmjs.com/get-npm
