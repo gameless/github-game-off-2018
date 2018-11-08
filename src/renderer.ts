@@ -2,8 +2,8 @@
 
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
@@ -28,6 +28,10 @@ var gameOver = false;
 var scoreText;
 
 var game = new Phaser.Game(config);
+
+window.addEventListener('resize', () => {
+  game.resize(window.innerWidth, window.innerHeight);
+});
 
 function preload ()
 {
