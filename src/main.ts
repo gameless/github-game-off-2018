@@ -1,4 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+import * as electronReload from 'electron-reload';
+
+electronReload(__dirname);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
