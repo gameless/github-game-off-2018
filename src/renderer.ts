@@ -11,6 +11,7 @@ const config = {
     }
   },
   scene: {
+    preload: preload,
     create: create
   }
 };
@@ -28,13 +29,17 @@ window.addEventListener('resize', () => {
   scene.cameras.main.setSize(width, height);
 });
 
-function create() {
+function preload() {
   scene = this;
 
+  scene.load.image('cat', 'assets/cat.png');
+}
+
+function create() {
   scene.matter.add.mouseSpring({ });
   scene.matter.world.setBounds(50, 50, 700, 500);
 
-  const m = scene.matter.add.rectangle(100, 100, 25, 50, { restitution: 0.5 });
-  const b = scene.matter.add.rectangle(100, 200, 25, 50, { restitution: 0.5 });
-  scene.matter.add.constraint(m, b, 100);
+  const cat = scene.matter.add.image(100, 100, 'cat');
+  cat.setDisplaySize(100, 60);
+  cat.setRectangle(100, 50, { });
 }
