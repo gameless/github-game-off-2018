@@ -1,18 +1,18 @@
 /// <reference path="../node_modules/phaser3-docs/typescript/phaser.d.ts" />
 
 const config = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    backgroundColor: '#ffffff',
-    physics: {
-      default: 'matter',
-      matter: {
-        debug: true
-      }
-    },
-    scene: {
-      create: create
+  width: window.innerWidth,
+  height: window.innerHeight,
+  backgroundColor: '#ffffff',
+  physics: {
+    default: 'matter',
+    matter: {
+      debug: true
     }
+  },
+  scene: {
+    create: create
+  }
 };
 
 const game = new Phaser.Game(config);
