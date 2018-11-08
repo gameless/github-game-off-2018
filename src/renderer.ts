@@ -12,7 +12,8 @@ const config = {
   },
   scene: {
     preload: preload,
-    create: create
+    create: create,
+    update: update
   }
 };
 
@@ -35,11 +36,29 @@ function preload() {
   scene.load.image('cat', 'assets/cat.png');
 }
 
+let cursors: Phaser.Input.Keyboard.CursorKeys;
+let cat: Phaser.Physics.Matter.Image;
+
 function create() {
+  cursors = scene.input.keyboard.createCursorKeys();
+
   scene.matter.add.mouseSpring({ });
   scene.matter.world.setBounds(50, 50, 700, 500);
 
-  const cat = scene.matter.add.image(100, 100, 'cat');
-  cat.setDisplaySize(100, 60);
-  cat.setRectangle(100, 50, { });
+  cat = scene.matter.add.image(100, 100, 'cat');
+  cat.setScale(0.2, 0.2);
+}
+
+function update() {
+  if (cursors.down.isDown) {
+    cat.setScale(0.2, Math.max(cat.scaleY - 0.01, 0.1));
+  } else {
+    cat.setScale(0.2, Math.min(cat.scaleY + 0.01, 0.2));
+  }
+  console.log(cat.scaleX, cat.scaleY);
+  if (cursors.left.isDown && !cursors.right.isDown) {
+    cat.setVelocityX(-10);
+  } else if (cursors.right.isDown && !cursors.left.isDown) {
+    cat.setVelocityX(10);
+  }
 }
