@@ -1,13 +1,10 @@
 import { app, BrowserWindow } from 'electron';
-import { enableLiveReload } from 'electron-compile';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow: Electron.BrowserWindow | null = null;
 
-const isDevMode = process.execPath.match(/[\\/]electron/);
-
-const createWindow = () => {
+function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -15,12 +12,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-
-  // Open the DevTools.
-  if (isDevMode) {
-    mainWindow.webContents.openDevTools();
-  }
+  mainWindow.loadFile(`file://${__dirname}/index.html`);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -52,6 +44,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
