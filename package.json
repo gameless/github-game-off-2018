@@ -1,18 +1,28 @@
 {
+  "productName": "GitHub Game Off",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": "github:gameless/github-game-off-2018",
+  "main": "src/main.ts",
   "scripts": {
-    "start": "brunch watch --server",
-    "test": "tsc --noEmit"
+    "start": "electron-forge start"
+  },
+  "config": {
+    "forge": {
+    }
   },
   "dependencies": {
-    "phaser": "^3"
+    "electron-compile": "^6",
+    "electron-squirrel-startup": "^1",
+    "phaser": "^3",
+    "tslib": "^1"
   },
   "devDependencies": {
-    "auto-reload-brunch": "^2",
-    "brunch": "^2",
+    "babel-plugin-transform-async-to-generator": "^6",
+    "babel-preset-env": "^1",
+    "electron-forge": "^5",
+    "electron-prebuilt-compile": "3",
     "phaser3-docs": "github:photonstorm/phaser3-docs#dbfad9f47ae3da6dc65e28d3c9dbafa66d1ccf61",
-    "typescript": "^3",
-    "typescript-brunch": "^2"
+    "typescript": "^3"
   }
 }
