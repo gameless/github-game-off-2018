@@ -30,8 +30,10 @@ window.addEventListener('resize', () => {
 function create() {
   scene = this;
 
-  this.matter.add.mouseSpring();
-  this.matter.world.setBounds(50, 50, 700, 500);
+  scene.matter.add.mouseSpring({ });
+  scene.matter.world.setBounds(50, 50, 700, 500);
 
-  this.matter.add.rectangle(100, 100, 25, 50, { restitution: 0.5 });
+  const m = scene.matter.add.rectangle(100, 100, 25, 50, { restitution: 0.5 });
+  const b = scene.matter.add.rectangle(100, 200, 25, 50, { restitution: 0.5 });
+  scene.matter.add.constraint(m, b, 100);
 }
