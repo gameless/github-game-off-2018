@@ -55,7 +55,6 @@ function update() {
   } else {
     cat.setScale(0.2, Math.min(cat.scaleY + 0.01, 0.2));
   }
-  console.log(cat.scaleX, cat.scaleY);
   if (cursors.left.isDown && !cursors.right.isDown) {
     cat.setVelocityX(-10);
   } else if (cursors.right.isDown && !cursors.left.isDown) {
