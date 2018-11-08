@@ -13,16 +13,11 @@
   },
   "dependencies": {
     "electron-compile": "^6",
-    "electron-squirrel-startup": "^1",
-    "phaser": "^3",
-    "tslib": "^1"
+    "phaser": "^3"
   },
   "devDependencies": {
-    "babel-plugin-transform-async-to-generator": "^6",
-    "babel-preset-env": "^1",
     "electron-forge": "^5",
-    "electron-prebuilt-compile": "3",
-    "phaser3-docs": "github:photonstorm/phaser3-docs#dbfad9f47ae3da6dc65e28d3c9dbafa66d1ccf61",
+    "electron-prebuilt-compile": "3.0.6",
     "typescript": "^3"
   }
 }
