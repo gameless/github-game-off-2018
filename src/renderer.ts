@@ -3,6 +3,7 @@
 const config = {
     width: window.innerWidth,
     height: window.innerHeight,
+    backgroundColor: '#ffffff',
     physics: {
       default: 'matter',
       matter: {
