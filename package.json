@@ -8,8 +8,7 @@
     "start": "electron-forge start"
   },
   "config": {
-    "forge": {
-    }
+    "forge": {}
   },
   "dependencies": {
     "electron-compile": "^6",
