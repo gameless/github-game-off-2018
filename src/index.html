@@ -1,2 +1,4 @@
 <!DOCTYPE html>
-<script src='renderer.ts'></script>
+<html lang='en'> <!-- "Cannot find module './renderer'" without this -->
+<script src='../node_modules/phaser/dist/phaser.js'></script>
+<script>require('./renderer');</script>
