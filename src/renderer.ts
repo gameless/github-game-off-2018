@@ -42,7 +42,6 @@ let cat: Phaser.Physics.Matter.Image;
 function create() {
   cursors = scene.input.keyboard.createCursorKeys();
 
-  scene.matter.add.mouseSpring({ });
   scene.matter.world.setBounds(50, 50, 700, 500);
 
   scene.matter.add.rectangle(500, 300, 100, 50, { isStatic: true });
