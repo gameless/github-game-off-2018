@@ -11,6 +11,7 @@
     "forge": {}
   },
   "dependencies": {
+    "@types/matter-js": "^0.10",
     "electron-compile": "^6",
     "phaser": "~3.15"
   },

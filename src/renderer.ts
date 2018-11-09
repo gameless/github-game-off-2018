@@ -1,5 +1,9 @@
 /// <reference path="../node_modules/phaser3-docs/typescript/phaser.d.ts" />
 
+import * as MatterJS from 'matter-js';
+// @ts-ignore: Property 'Matter' does not exist on type 'typeof Matter'.
+const Matter: typeof MatterJS = Phaser.Physics.Matter.Matter;
+
 const config = {
   width: window.innerWidth,
   height: window.innerHeight,
