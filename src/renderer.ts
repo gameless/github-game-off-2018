@@ -64,4 +64,8 @@ function update() {
   } else if (cursors.right.isDown && !cursors.left.isDown) {
     cat.setVelocityX(10);
   }
+
+  if (Phaser.Input.Keyboard.JustDown(cursors.up)) {
+    cat.setVelocityY(-10);
+  }
 }
