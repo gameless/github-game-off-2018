@@ -33,7 +33,9 @@ window.addEventListener('resize', () => {
 function preload() {
   scene = this;
 
-  scene.load.image('cat', 'assets/cat.png');
+  scene.load.spritesheet(
+    'cat', 'assets/cat.png', { frameWidth: 400, frameHeight: 230 }
+  );
 }
 
 let cursors: Phaser.Input.Keyboard.CursorKeys;
@@ -45,7 +47,7 @@ function create() {
   scene.matter.world.setBounds(50, 50, 700, 500);
 
   scene.matter.add.rectangle(500, 300, 100, 50, { isStatic: true });
-  cat = scene.matter.add.image(100, 100, 'cat');
+  cat = scene.matter.add.sprite(100, 100, 'cat');
   cat.setScale(0.2, 0.2);
 }
 
