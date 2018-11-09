@@ -50,10 +50,15 @@ function create() {
 }
 
 function update() {
+  const rotation = cat.rotation;
   if (cursors.down.isDown) {
+    cat.setRotation(0);
     cat.setScale(0.2, Math.max(cat.scaleY - 0.01, 0.1));
+    cat.setRotation(rotation);
   } else {
+    cat.setRotation(0);
     cat.setScale(0.2, Math.min(cat.scaleY + 0.01, 0.2));
+    cat.setRotation(rotation);
   }
   if (cursors.left.isDown && !cursors.right.isDown) {
     cat.setVelocityX(-10);
