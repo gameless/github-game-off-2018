@@ -45,6 +45,7 @@ function create() {
   scene.matter.add.mouseSpring({ });
   scene.matter.world.setBounds(50, 50, 700, 500);
 
+  scene.matter.add.rectangle(500, 300, 100, 50, { isStatic: true });
   cat = scene.matter.add.image(100, 100, 'cat');
   cat.setScale(0.2, 0.2);
 }
