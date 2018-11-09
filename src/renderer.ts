@@ -43,35 +43,67 @@ function preload() {
 }
 
 let cursors: Phaser.Input.Keyboard.CursorKeys;
-let cat: Phaser.Physics.Matter.Image;
+let car: Matter.Composite;
+let axelA: Matter.Constraint;
+let axelB: Matter.Constraint;
 
 function create() {
   cursors = scene.input.keyboard.createCursorKeys();
 
+  scene.matter.add.mouseSpring({ });
   scene.matter.world.setBounds(50, 50, 700, 500);
 
   scene.matter.add.rectangle(500, 300, 100, 50, { isStatic: true });
-  cat = scene.matter.add.sprite(100, 100, 'cat');
-  cat.setScale(0.2, 0.2);
+
+  const group = Matter.Body.nextGroup(true);
+  const car = Matter.Composite.create();
+  const body = Matter.Bodies.rectangle(200, 100, 100, 50, {
+    collisionFilter: {
+      group: group
+    },
+    density: 0.0002
+  });
+  const wheelA = Matter.Bodies.circle(150, 125, 25, {
+    collisionFilter: {
+      group: group
+    },
+    friction: 0.8
+  });
+  const wheelB = Matter.Bodies.circle(250, 125, 25, {
+    collisionFilter: {
+      group: group
+    },
+    friction: 0.8
+  });
+  axelA = Matter.Constraint.create({
+    bodyB: body,
+    pointB: { x: -50, y: 25 },
+    bodyA: wheelA,
+    stiffness: 1,
+    length: 0
+  });
+  axelB = Matter.Constraint.create({
+    bodyB: body,
+    pointB: { x: 50, y: 25 },
+    bodyA: wheelB,
+    stiffness: 1,
+    length: 0
+  });
+  Matter.Composite.add(car, body);
+  Matter.Composite.add(car, wheelA);
+  Matter.Composite.add(car, wheelB);
+  Matter.Composite.add(car, axelA);
+  Matter.Composite.add(car, axelB);
+  scene.matter.world.add(car);
 }
 
 function update() {
-  const rotation = cat.rotation;
-  cat.setRotation(0);
-  if (cursors.down.isDown) {
-    cat.setScale(0.2, Math.max(cat.scaleY - 0.01, 0.1));
-  } else {
-    cat.setScale(0.2, Math.min(cat.scaleY + 0.01, 0.2));
+  if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
+    axelA.pointB = { x: -50, y: 10 };
+    axelB.pointB = { x: 50, y: 10 };
   }
-  cat.setRotation(rotation);
-
-  if (cursors.left.isDown && !cursors.right.isDown) {
-    cat.setVelocityX(-10);
-  } else if (cursors.right.isDown && !cursors.left.isDown) {
-    cat.setVelocityX(10);
-  }
-
-  if (Phaser.Input.Keyboard.JustDown(cursors.up)) {
-    cat.setVelocityY(-10);
+  if (Phaser.Input.Keyboard.JustUp(cursors.down)) {
+    axelA.pointB = { x: -50, y: 25 };
+    axelB.pointB = { x: 50, y: 25 };
   }
 }
