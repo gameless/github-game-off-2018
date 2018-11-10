@@ -43,6 +43,7 @@ function preload() {
 }
 
 let cursors: Phaser.Input.Keyboard.CursorKeys;
+let body: Matter.Body;
 let car: Matter.Composite;
 let axelA: Matter.Constraint;
 let axelB: Matter.Constraint;
@@ -56,8 +57,7 @@ function create() {
   scene.matter.add.rectangle(500, 300, 100, 50, { isStatic: true });
 
   const group = Matter.Body.nextGroup(true);
-  const car = Matter.Composite.create();
-  const body = Matter.Bodies.rectangle(200, 100, 100, 50, {
+  body = Matter.Bodies.rectangle(200, 100, 100, 50, {
     collisionFilter: {
       group: group
     },
@@ -89,21 +89,39 @@ function create() {
     stiffness: 1,
     length: 0
   });
-  Matter.Composite.add(car, body);
-  Matter.Composite.add(car, wheelA);
-  Matter.Composite.add(car, wheelB);
-  Matter.Composite.add(car, axelA);
-  Matter.Composite.add(car, axelB);
-  scene.matter.world.add(car);
+  scene.matter.world.add(body);
+  scene.matter.world.add(wheelA);
+  scene.matter.world.add(wheelB);
+  scene.matter.world.add(axelA);
+  scene.matter.world.add(axelB);
 }
 
 function update() {
+  const angle = body.angle;
   if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
-    axelA.pointB = { x: -50, y: 10 };
-    axelB.pointB = { x: 50, y: 10 };
+    const dist = Math.sqrt(50*50+10*10);
+    const angle2 = Math.atan2(10, -50);
+    const angle3 = Math.atan2(10, 50);
+    axelA.pointB = {
+      x: dist*Math.cos(angle + angle2),
+      y: dist*Math.sin(angle + angle2)
+    };
+    axelB.pointB = {
+      x: dist*Math.cos(angle + angle3),
+      y: dist*Math.sin(angle + angle3)
+    };
   }
   if (Phaser.Input.Keyboard.JustUp(cursors.down)) {
-    axelA.pointB = { x: -50, y: 25 };
-    axelB.pointB = { x: 50, y: 25 };
+    const dist = Math.sqrt(50*50+25*25);
+    const angle2 = Math.atan2(25, -50);
+    const angle3 = Math.atan2(25, 50);
+    axelA.pointB = {
+      x: dist*Math.cos(angle + angle2),
+      y: dist*Math.sin(angle + angle2)
+    };
+    axelB.pointB = {
+      x: dist*Math.cos(angle + angle3),
+      y: dist*Math.sin(angle + angle3)
+    };
   }
 }
